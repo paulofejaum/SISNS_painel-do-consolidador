@@ -555,23 +555,24 @@ document.getElementById("toggle-administrativo").addEventListener("click", funct
 <table>
 <thead>
 <tr>
-<th rowspan="2">N° da ocorrência</th>
-<th rowspan="2">Data da ocorrência</th>
-<th rowspan="2">Tipo de penalidade</th>
-<th colspan="2">Empregado penalizado</th>
-<th rowspan="2">Ano/mês da apuração</th>
-<th colspan="3">Situação da Avaliação da Defesa</th>
-<th rowspan="2">Prazo</th>
-<th rowspan="2">Unidade de lotação</th>
-<th rowspan="2">Ações</th>
+  <th rowspan="2" style="text-align: center;">N° da ocorrência</th>
+  <th rowspan="2" style="text-align: center;">Data da ocorrência</th>
+  <th rowspan="2" style="text-align: center;">Tipo de penalidade</th>
+  <th colspan="2" style="text-align: center;">Empregado penalizado</th>
+  <th rowspan="2" style="text-align: center;">Ano/mês da apuração</th>
+  <!-- <th colspan="3" style="text-align: center;">Situação da Avaliação da Defesa</th> -->
+  <th rowspan="2" style="text-align: center;">Prazo</th>
+  <th rowspan="2" style="text-align: center;">Unidade de lotação</th>
+  <th rowspan="2" style="text-align: center;">Ações</th>
 </tr>
+
 <tr>
 <th onclick="alternarOrdenacao(this, 3)">Matrícula <span class="seta">↓</span></th>
 <th onclick="alternarOrdenacao(this, 4)">Nome <span class="seta">↓</span></th>
-<th onclick="alternarOrdenacao(this, 6)">OUVID <span class="seta">↓</span></th>
+<!--<th onclick="alternarOrdenacao(this, 6)">OUVID <span class="seta">↓</span></th>
 <th onclick="alternarOrdenacao(this, 7)">SUPOR <span class="seta">↓</span></th>
 <th onclick="alternarOrdenacao(this, 8)">SUMEV <span class="seta">↓</span></th>
-</tr>
+</tr>-->
 </thead>
 <tbody id="table-body">
 <!-- Linhas da tabela -->
@@ -740,24 +741,28 @@ if (btn) {
       const matricula = "M"+(1000+i);
       const nome = nomes[i-1];
       const linha = `
-        <tr>
-          <td>${String(i).padStart(4,'0')}</td>
-          <td>${randomDate(30)}</td>
-          <td>${tipos[Math.floor(Math.random()*tipos.length)]}</td>
-          <td>${matricula}</td>
-          <td>${nome}</td>
-          <td>${("0"+(Math.floor(Math.random()*12)+1)).slice(-2)}/2024</td>
-          <td>${randomStatus()}</td>
-          <td>${randomStatus()}</td>
-          <td>${randomStatus()}</td>
-          <td>${randomDate(60)}</td>
-          <td>${unidades[Math.floor(Math.random()*unidades.length)]}</td>
-          <td class="actions">
-            <i class="fa fa-eye"></i>
-            <i class="fa fa-edit"></i>
-            <i class="fa fa-plus"></i>
-          </td>
-        </tr>
+      <tr>
+    <td style="text-align: center;">${String(i).padStart(4,'0')}</td>
+    <td style="text-align: center;">${randomDate(30)}</td>
+    <td style="text-align: center;">${tipos[Math.floor(Math.random()*tipos.length)]}</td>
+    <td style="text-align: center;">${matricula}</td>
+    <td style="text-align: center;">${nome}</td>
+    <td style="text-align: center;">${("0"+(Math.floor(Math.random()*12)+1)).slice(-2)}/2024</td>
+
+    <!-- Ocultada: <td style="text-align: center;">${randomStatus()}</td> -->
+    <!-- Ocultada: <td style="text-align: center;">${randomStatus()}</td> -->
+    <!-- Ocultada: <td style="text-align: center;">${randomStatus()}</td> -->
+
+    <td style="text-align: center;">${randomDate(60)}</td>
+    <td style="text-align: center;">${unidades[Math.floor(Math.random()*unidades.length)]}</td>
+    <td class="actions" style="text-align: center;">
+      <i class="fa fa-eye" style="color: #005ca9;"></i>
+      <i class="fa fa-edit" style="color: #005ca9;"></i>
+      <i class="fa fa-plus" style="color: #005ca9;"></i>
+    </td>
+  </tr>
+
+
       `;
       tbody.innerHTML += linha;
     }
